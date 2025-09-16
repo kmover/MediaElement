@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频可视化播放器</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="http://cdn.cc/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="testControls">
+
+            <div class="control-title">
+                <i class="fas fa-sliders-h"></i>
+                <h4>播放控制</h4>
+                <button id="playBtn">
+                    <i class="fas fa-play"></i></button>
+                <button id="stopBtn" disabled>
+                    <i class="fas fa-stop"></i></button>
+                <div class="btn-group">
+                </div>
+            </div>
+
+            <div class="control-title">
+                <i class="fas fa-palette"></i>
+                <h4>可视化设置</h4>
+                <select id="gradientSelect">
+                    <option value="blue">蓝色系</option>
+                    <option value="rainbow">彩虹色</option>
+                    <option value="fire">火焰色</option>
+                    <option value="ocean">海洋色</option>
+                </select>
+                <input type="range" id="barWidth" min="1" max="20" value="4">
+                <h4>条形宽度</h4>
+            </div>
+
+            <div class="control-title">
+                <i class="fas fa-file-audio"></i>
+                <input type="text" id="audioUrl" placeholder="输入音频URL或选择文件">
+                <input type="file" id="fileInput" accept="audio/*" style="display: none;">
+                <button id="fileSelectBtn">
+                    <i class="fas fa-folder-open"></i></button>
+                <button id="loadBtn">
+                    <i class="fas fa-download"></i></button>
+            </div>
+        </div>
+
+        <div class="visualizers">
+            <div class="visualizer-container">
+                <div class="visualizer-title">条形频谱</div>
+                <canvas id="barVisualizer"></canvas>
+            </div>
+
+            <div class="visualizer-container">
+                <div class="visualizer-title">圆形频谱</div>
+                <canvas id="circleVisualizer"></canvas>
+            </div>
+
+            <div class="visualizer-container">
+                <div class="visualizer-title">波形频谱</div>
+                <canvas id="waveVisualizer"></canvas>
+            </div>
+
+            <div class="visualizer-container">
+                <div class="visualizer-title">圆点频谱</div>
+                <canvas id="dotVisualizer"></canvas>
+            </div>
+
+            <div class="visualizer-container">
+                <div class="visualizer-title">1. 粒子效果频谱</div>
+                <canvas id="ParticleVisualizer"></canvas>
+            </div>
+
+
+            <div class="visualizer-container">
+                <div class="visualizer-title">2. 网格频谱</div>
+                <canvas id="GridVisualizer"></canvas>
+            </div>
+
+
+            <div class="visualizer-container">
+                <div class="visualizer-title">3. 环形波形频谱</div>
+                <canvas id="RingWaveVisualizer"></canvas>
+            </div>
+
+
+            <div class="visualizer-container">
+                <div class="visualizer-title">4. 瀑布流频谱</div>
+                <canvas id="WaterVisualizer"></canvas>
+            </div>
+
+
+            <div class="visualizer-container">
+                <div class="visualizer-title">5. 3D柱状频谱</div>
+                <canvas id="3DBarVisualizer"></canvas>
+            </div>
+
+
+            <div class="visualizer-container">
+                <div class="visualizer-title">6. 声波纹效果</div>
+                <canvas id="SoundwaveVisualizer"></canvas>
+            </div>
+        </div>
+
+
+        <div class="controls">
+            <div class="control-group">
+                <div class="progress-group">
+                    <span id="currentTime">00:00</span>
+                    <input type="range" id="progressBar" class="progressBar" value="0" min="0" max="100" step="0.1">
+                    <span id="duration">00:00</span>
+                </div>
+
+                <div class="btn-group" style="margin-top: 15px;">
+                    <!-- 上一曲 -->
+                    <button id="prevBtn" class="prevBtn">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <!-- 播放暂停 -->
+                    <button id="playPauseBtn" class="playPauseBtn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <!-- 下一曲 -->
+                    <button id="nextBtn" class="nextBtn">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <!-- 静音 -->
+                    <button id="muteBtn" class="muteBtn">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+                <div class="volume-control">
+                    <input type="range" id="volumeBar" class="volumeBar" min="0" max="100" value="100">
+                </div>
+            </div>
+
+        </div>
+        <div id="status" class="status">就绪</div>
+
+
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
